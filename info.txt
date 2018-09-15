@@ -1,0 +1,10 @@
+login admin
+footer
+api facebook
+api twitter
+google maps localização
+avaliação
+comentários
+imagens no twitter
+curriculo no footer
+tapa olho no passaro

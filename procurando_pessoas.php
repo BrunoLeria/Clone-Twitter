@@ -122,6 +122,7 @@
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
 	          	<li><a href="home.php" id="btn_Sair">Home</a></li>
+	          	<li><a href="editar.php" id="btn_Editar">Editar seu usuário</a></li>
 	            <li><a href="sair.php" id="btn_Sair">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->

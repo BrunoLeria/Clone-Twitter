@@ -1,6 +1,13 @@
 <?php 
 
+session_start();
+
+if(!isset($_SESSION['usuario']))
+	header ('Location: index.php?erro=1');
+
 require_once('db.class.php');
+
+$id_usuario = $_SESSION['id_usuario'];
 
 $usuario = $_POST['usuario'];
 $email = $_POST['email'];
@@ -19,7 +26,7 @@ if($senha != $confirmarSenha)
 	$senha_diferentes = true;
 
 	//verifica se o usuário já existe
-$sql = "select * from usuarios where usuario = '$usuario' ";
+$sql = "select * from usuarios where usuario = '$usuario' and id != $id_usuario ";
 if ($resultado_id  = mysqli_query($link,$sql)) {
 		# code...
 
@@ -33,7 +40,7 @@ if ($resultado_id  = mysqli_query($link,$sql)) {
 	echo "Erro ao tentar localizar o registro de usuario";
 }
 	//verifica se o email já existe
-$sql = "select * from usuarios where email = '$email' ";
+$sql = "select * from usuarios where email = '$email' and id != $id_usuario ";
 if ($resultado_id  = mysqli_query($link,$sql)) {
 		# code...
 
@@ -59,17 +66,15 @@ if($usuario_existe || $email_existe || $senha_diferentes){
 	if ($senha_diferentes)
 		$retorno_get = "erro_senha=1&";
 
-	header('Location: inscrevase.php?'.$retorno_get);
+	header('Location: editar.php?'.$retorno_get);
 	die();
 }
 
+$sql = "UPDATE usuarios SET usuario = '$usuario', email = '$email', senha= '$senha' WHERE id = $id_usuario";
 
-
-$sql = "insert into usuarios(usuario, email, senha) values ('$usuario', '$email', '$senha')";
-
-	//executar a query
+//executar a query
 if(mysqli_query($link, $sql)){
-	header('Location: index.php?novouser=1');
+	header('Location: home.php?novaconf=1');
 }
 
 ?>

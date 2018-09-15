@@ -53,6 +53,12 @@
 			
 			$(document).ready( function () {
 
+				var inscricao = window.location.search;
+				
+				if (inscricao == "?novaconf=1") {
+					alert('Novas configurações salvas');
+				}
+
 				//associar o evento de clique ao botão Tweet
 				$('#btn_tweet').click( function(){
 					if ($('#texto_tweet').val().length > 0) {
@@ -104,6 +110,8 @@
 	        
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
+	          	<li><a href="procurando_pessoas.php" id="btn_procurando_pessoas">Procurar Pessoas</a></li>
+	            <li><a href="editar.php" id="btn_Editar">Editar seu usuário</a></li>
 	            <li><a href="sair.php" id="btn_Sair">Sair</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
@@ -145,7 +153,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<h4><a href="procurando_pessoas.php">Procurar por pessoas</a></h4>
+						<h4><a href="procurando_pessoas.php" id="link_procurando_pessoas">Procurar por pessoas</a></h4>
 					</div>
 				</div>
 			</div>

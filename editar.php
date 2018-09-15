@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['usuario']))
+	header ('Location: index.php?erro=1');
+
 $erro_usuario = isset($_GET['erro_usuario']) ?  $_GET['erro_usuario']: 0;
 $erro_email = isset($_GET['erro_email']) ?  $_GET['erro_email']: 0;
 $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
@@ -44,7 +49,7 @@ $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.php">Voltar para Home</a></li>
+					<li><a href="home.php">Voltar para Home</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -57,11 +62,11 @@ $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
 
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
-			<h3>Inscreva-se já.</h3>
+			<h3>Edite seus dados</h3>
 			<br />
-			<form method="post" action="registra_usuario.php" id="formCadastrarse">
+			<form method="post" action="alterar_usuario.php" id="formCadastrarse">
 				<div class="form-group">
-					<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
+					<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="required">
 					<?php 
 					if($erro_usuario){
 						echo "<font color = #FF000>Usuário já cadastrado</font>";
@@ -70,7 +75,7 @@ $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
 				</div>
 
 				<div class="form-group">
-					<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
+					<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
 					<?php 
 					if($erro_email){
 						echo "<font color = #FF000>Email já cadastrado</font>";
@@ -79,7 +84,7 @@ $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
 				</div>
 
 				<div class="form-group">
-					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="required">
 				</div>
 					<?php
 					if($erro_senha){
@@ -90,7 +95,7 @@ $erro_senha = isset($_GET['erro_senha']) ? $_GET['erro_senha'] : 0;
 					<input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar Senha" required="requiored">
 				</div>
 
-				<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
+				<button type="submit" class="btn btn-primary form-control">Confirmar</button>
 			</form>
 			
 		</div>
